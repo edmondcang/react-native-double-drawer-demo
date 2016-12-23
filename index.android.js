@@ -29,7 +29,7 @@ export default class ReactNativeElementsPrototypeLinux extends Component {
 
   constructor () {
     super()
-    this.state = { isLeftMenuOpen: false }
+    this.state = { isLeftMenuOpen: false, isRightMenuOpen: false }
   }
 
   componentDidMount() {
@@ -68,10 +68,14 @@ export default class ReactNativeElementsPrototypeLinux extends Component {
             </Button>
 
             <Title style={{
-              borderColor: '#ccc'
+              alignSelf: 'center'
             }}>
               <Text>Header</Text>
             </Title>
+
+            <Button transparent onPress={ () => this.openRightMenu() }>
+              <Icon name='ios-menu' />
+            </Button>
           </Header>
 
           <Content style={{ backgroundColor: '#fff', flex: 1 }}>
