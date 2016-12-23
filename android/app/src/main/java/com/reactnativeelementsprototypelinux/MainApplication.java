@@ -1,4 +1,4 @@
-package com.reactnativeelementsprototype;
+package com.reactnativeelementsprototypelinux;
 
 import android.app.Application;
 import android.util.Log;

@@ -17,7 +17,7 @@ import {
   SideMenu, List, ListItem
 } from 'react-native-elements';
 
-export default class ReactNativeElementsPrototype extends Component {
+export default class ReactNativeElementsPrototypeLinux extends Component {
 
   constructor () {
     super()
@@ -65,4 +65,4 @@ export default class ReactNativeElementsPrototype extends Component {
   }
 }
 
-AppRegistry.registerComponent('ReactNativeElementsPrototype', () => ReactNativeElementsPrototype);
+AppRegistry.registerComponent('ReactNativeElementsPrototypeLinux', () => ReactNativeElementsPrototypeLinux);
