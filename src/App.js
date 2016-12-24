@@ -85,8 +85,3 @@ const RightMenuContent = (
     </Content>
   </Container>
 );
-
-const styles = {
-  drawer: { shadowColor: '#000000', shadowOpacity: 0.8, shadowRadius: 3},
-  main: {paddingLeft: 0},
-}
