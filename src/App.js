@@ -18,38 +18,51 @@ import Drawer from 'react-native-drawer';
 import LeftMenu from 'react-native-side-menu';
 import RightMenu from 'react-native-side-menu';
 
-import MainContent from './components/MainContent';
+// import MainContent from './components/MainContent';
 
-export default class App extends Component {
+const App = () => {
+  return (
+    <RightMenu menuPosition="right" menu={RightMenuContent} isOpen={false}>
+      <LeftMenu menu={LeftMenuContent} isOpen={false}>
+        <MainContent />
+      </LeftMenu>
+    </RightMenu>
+  );
+};
 
-  constructor () {
-    super()
-    this.state = { isLeftMenuOpen: false, isRightMenuOpen: false }
-  }
+const openLeftMenu = () => LeftMenu.isOpen = true;
 
-  componentDidMount() {
-  }
+const MainContent = () => {
+  return (
+    <Container>
+      <Header>
+        <Button transparent onPress={openLeftMenu}>
+          <Icon name='ios-menu' />
+        </Button>
 
-  openLeftMenu() {
-    this.setState({ isLeftMenuOpen: true });
-  }
+        <Title style={{
+          alignSelf: 'center'
+        }}>
+          <Text>Header</Text>
+        </Title>
 
-  openRightMenu() {
-    this.setState({ isRightMenuOpen: true });
-  }
+        <Button transparent>
+          <Icon name='ios-menu' />
+        </Button>
+      </Header>
 
-  render () {
-    return (
-      <RightMenu menuPosition="right" menu={RightMenuContent} isOpen={this.state.isRightMenuOpen}>
-        <LeftMenu menu={MenuComponent} isOpen={this.state.isLeftMenuOpen}>
-          <MainContent
-            openLeftMenu={this.openLeftMenu.bind(this)}
-            openRightMenu={this.openRightMenu.bind(this)}
-          />
-        </LeftMenu>
-      </RightMenu>
-    )
-  }
+      <Content style={{ backgroundColor: '#fff', flex: 1 }}>
+      </Content>
+
+      <Footer>
+        <FooterTab>
+          <Button transparent>
+            <Icon name='ios-call' />
+          </Button>
+        </FooterTab>
+      </Footer>
+    </Container>
+  );
 }
 
 const list = [
@@ -60,7 +73,7 @@ const list = [
 ];
 
 // SideMenu takes a React Native element as a prop for the actual Side Menu
-const MenuComponent = (
+const LeftMenuContent = (
   <View style={{flex: 1, backgroundColor: '#ededed', paddingTop: 50}}>
     <List containerStyle={{marginBottom: 20}}>
     {
@@ -85,3 +98,5 @@ const RightMenuContent = (
     </Content>
   </Container>
 );
+
+export default App;
