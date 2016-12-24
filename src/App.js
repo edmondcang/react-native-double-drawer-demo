@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+  DrawerLayoutAndroid,
   StyleSheet,
   Text,
   View
@@ -15,7 +16,6 @@ import {
 
 import Drawer from 'react-native-drawer';
 
-import LeftMenu from 'react-native-side-menu';
 import RightMenu from 'react-native-side-menu';
 
 import MainContent from './components/MainContent';
@@ -31,7 +31,7 @@ export default class App extends Component {
   }
 
   openLeftMenu() {
-    this.setState({ isLeftMenuOpen: true });
+    this.leftDrawer.openDrawer();
   }
 
   openRightMenu() {
@@ -40,13 +40,22 @@ export default class App extends Component {
 
   render () {
     return (
-      <RightMenu menuPosition="right" menu={RightMenuContent} isOpen={this.state.isRightMenuOpen}>
-        <LeftMenu menu={MenuComponent} isOpen={this.state.isLeftMenuOpen}>
+      <RightMenu
+        menuPosition="right"
+        menu={RightMenuContent}
+        isOpen={this.state.isRightMenuOpen}
+        >
+        <DrawerLayoutAndroid
+          ref={ ref => this.leftDrawer = ref }
+          drawerWidth={300}
+          drawerPosition={DrawerLayoutAndroid.positions.Left}
+          renderNavigationView={() => MenuComponent}
+          >
           <MainContent
             openLeftMenu={this.openLeftMenu.bind(this)}
             openRightMenu={this.openRightMenu.bind(this)}
-          />
-        </LeftMenu>
+            />
+        </DrawerLayoutAndroid>
       </RightMenu>
     )
   }
