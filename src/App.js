@@ -14,8 +14,6 @@ import {
   Container, Header, Title, Content, Footer, FooterTab, Button, Icon
 } from 'native-base';
 
-import Drawer from 'react-native-drawer';
-
 import RightMenu from 'react-native-side-menu';
 
 import MainContent from './components/MainContent';
